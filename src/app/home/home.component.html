@@ -1,0 +1,67 @@
+<div style="padding: 20px;">
+    <div style="padding: 20px; border: 1px solid #ccc; text-align: center;">
+        <a style="margin-inline-end: 20px;" (click)="popularCards()">Popular</a>
+        <a style="margin-inline-end: 20px;" (click)="mostDownloadedCards()">By Downloads</a>
+        <a style="margin-inline-end: 20px;" (click)="commingSoonCards()" >Comming Soon</a>
+        <a style="margin-inline-end: 20px;" (click)="addCard()">Add</a>
+        <a style="float: right;" (click)="logout()">Logout</a>
+    </div>
+
+    <div *ngIf="mode == 'view'" class="row mt-5">
+        <div class="col-xxl-2 col-lg-3 col-md-4 col-sm-6" *ngFor="let card of FilteredCards">
+            <div style="border: 1px solid #ccc; border-radius: 10px; padding: 20px;" >
+                <div><b>Title:</b> {{card.title}}</div>
+                <img src="assets/card.jpg" width="100%" class="mt-2">
+                <div class="mt-2" >
+                    <span><b>Date:</b> {{card.date | date}}</span>
+                    <span style="float: right;"><i class="fa-solid fa-star" style="Color:rgb(255, 196, 0)"></i> {{card.stars}}</span>
+                </div>
+                <div class="mt-2" ><b>Description:</b></div>
+                <div class="mt-2" >{{card.description}}</div>
+                <div class="mt-2" style="text-align: end;">
+                    <button type="button" style="background-color: rgb(138, 24, 128);color: #fff;">Add to Card</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div  *ngIf="mode == 'add'" class="mt-5" style="text-align: center;">
+        <div style="width: 600px;display: inline-block;">
+            <form #f="ngForm" (ngSubmit)="submit(f)">
+                <h3>Add New Card</h3>
+                <br /><br />
+                <input type="text" class="form-input" placeholder="Title" [(ngModel)]="title" name="title" required
+                    #titleRef="ngModel">
+                <span class="form-validation" *ngIf="f.submitted && titleRef.invalid">* This field is rqueired!</span>
+                <br /><br />
+                <select class="form-input" [(ngModel)]="stars" name="stars" required #starsRef="ngModel">
+                    <option [ngValue]="undefined">-- Please Select Stars --</option>
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                </select>
+                <span class="form-validation" *ngIf="f.submitted && starsRef.invalid">* This field is rqueired!</span>
+                <br /><br />
+                <textarea class="form-input" placeholder="Description" [(ngModel)]="description" name="description"
+                    required #descriptionRef="ngModel"></textarea>
+                <span class="form-validation" *ngIf="f.submitted && descriptionRef.invalid">* This field is rqueired!
+                </span>
+                <br /><br />
+                <input type="date" class="form-input" placeholder="Date" [(ngModel)]="date" name="date" required
+                    #dateRef="ngModel">
+                <span class="form-validation" *ngIf="f.submitted && dateRef.invalid">* This field is rqueired!</span>
+                <br /><br />
+                <input type="number" class="form-input" placeholder="Downloads" [(ngModel)]="downloads" name="downloads" min="0">
+                <br /><br />
+                <span style="text-align:start;">
+                    <input type="checkbox" [(ngModel)]="commingSoon" name="commingSoon"> Comming Soon
+                </span>
+                <br /><br />
+                <button type="submit" style="padding: 10px; width: 600px;font-size: 20px;">Add</button>
+            </form>
+        </div>
+    </div>
+</div>

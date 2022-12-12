@@ -11,16 +11,16 @@ export class RegistrationComponent implements OnInit {
 
   name: string | undefined;
   email: string | undefined;
-  passowrd: string | undefined;
+  password: string | undefined;
   confirmPassword: string | undefined;
 
   constructor(private router: Router) {}
   ngOnInit(): void {
   }
   submit(f: NgForm){
-    if(f.invalid){
+    if(!f.valid){
       return;
     }
-    this.router.navigate(['/popular']);
+    this.router.navigate(['/home']);
   }
 }

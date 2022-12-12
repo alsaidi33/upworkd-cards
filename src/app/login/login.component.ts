@@ -18,7 +18,7 @@ export class LoginComponent implements OnInit {
 
   login(){
     if(this.email == "test@gmail.com" && this.password == "12345"){
-      this.router.navigate(['/popular']);
+      this.router.navigate(['/home']);
     } else {
       this.error = "** Invalid Email or Password **";
     }

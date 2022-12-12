@@ -8,10 +8,7 @@ import { LoginComponent } from './login/login.component';
 import { RegistrationComponent } from './registration/registration.component';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
-import { PopularComponent } from './popular/popular.component';
-import { ByDownloadsComponent } from './by-downloads/by-downloads.component';
-import { CommingSoonComponent } from './comming-soon/comming-soon.component';
-import { AddComponent } from './add/add.component';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
@@ -19,10 +16,7 @@ import { AddComponent } from './add/add.component';
     AuthComponent,
     LoginComponent,
     RegistrationComponent,
-    PopularComponent,
-    ByDownloadsComponent,
-    CommingSoonComponent,
-    AddComponent
+    HomeComponent
   ],
   imports: [
     BrowserModule,
